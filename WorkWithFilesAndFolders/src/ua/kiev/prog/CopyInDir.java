@@ -7,7 +7,7 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
-public class CopyInFile {
+public class CopyInDir {
 									//1
 	/*public static void copyAll(String nameStrFrom, String nameStrTo) {
 			
@@ -23,9 +23,9 @@ public class CopyInFile {
 							System.out.println(nextDstFilename);
 							}
 						}catch (Exception e) {
-					System.out.println(e);
+					System.out.println(e.getMessage());
 						}
-			
+					System.out.println("OK!!!");
     }*/
 	
 										//2
