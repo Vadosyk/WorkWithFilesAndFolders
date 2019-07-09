@@ -7,6 +7,8 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
+								
+
 public class CopyInDir {
 									//1
 	/*public static void copyAll(String nameStrFrom, String nameStrTo) {
@@ -31,22 +33,25 @@ public class CopyInDir {
 										//2
 	public static void copyBuf(File from, File to) {// с использованием   BufferedInputStream & BufferedOutputStream
 		try {
-			FileInputStream fis = new FileInputStream(from);
-			BufferedInputStream bis = new  BufferedInputStream(fis);
-			try {
-				FileOutputStream fos = new FileOutputStream(to);
-				BufferedOutputStream bos = new  BufferedOutputStream(fos);
-				try {
+			
+			
+			try(FileInputStream fis = new FileInputStream(from);
+					FileOutputStream fos = new FileOutputStream(to)) {
+				
+				try(BufferedInputStream bis = new  BufferedInputStream(fis);
+						BufferedOutputStream bos = new  BufferedOutputStream(fos)) {
+					
 					byte [] buff= new byte [128*1024];
 					int str;
-                while ((str=bis.read(buff))>=0) {
-                    bos.write(buff,0,buff.length);
+                while ((str=bis.read(buff))!=-1) {
+                	
+                    bos.write(buff,0,str);
                 }
             } finally {
-                bos.close();
+               
             }
         } finally {
-           bis.close();
+          
         }
 	}catch (Exception e) {
 		System.out.println(e.getMessage());
